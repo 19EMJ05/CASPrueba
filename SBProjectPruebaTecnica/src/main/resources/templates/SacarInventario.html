@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:insert="Plantillas/menu :: head">
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header th:replace="Plantillas/menu :: menu"></header>
+        <div style="width: 100%; align-content: center;">
+        
+        <table style="width: 60%; border-collapse: collapse;  margin: auto;">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                
+                <tbody th:if="${vProductos } ">
+                    <tr th:each="vProduc: ${vProductos}">
+                        <td th:text="${vProduc.nomproducto}">ID Producto</td>
+                        <td th:text="${vProduc.cantidad}">ID Producto</td>
+                    </tr>
+                </tbody>
+          </table> 
+        
+        </div>
+        <footer th:replace="Plantillas/menu :: footer"></footer>
+    </body>
+</html>

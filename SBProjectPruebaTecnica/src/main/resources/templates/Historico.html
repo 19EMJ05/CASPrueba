@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:insert="Plantillas/menu :: head">
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header th:replace="Plantillas/menu :: menu"></header>
+        <br>
+            <form th:action="@{/historicoFiltar}" method="Post">
+        <label for="tipoMovimiento">Tipo de Movimiento:</label>
+        <input type="type" name="filtro">
+        <button type="submit">Filtrar</button>
+    </form>
+        <div style="width: 100%; align-content: center;">
+        
+        <table style="width: 60%; border-collapse: collapse;  margin: auto;">
+                <thead>
+                    <tr>
+                        <th>id Movimiento</th>
+                        <th>id Producto</th>
+                        <th>tipo Movimiento</th>
+                        <th>id Usuario</th>
+                        <th>fecha Mov</th>
+                    </tr>
+                </thead>
+                
+                <tbody th:if="${vhistoricoProductos != null and !vhistoricoProductos.empty} ">
+                    <tr th:each="vhistorico: ${vhistoricoProductos}" 
+                        th:if="${vhistorico.tipomovimiento} == ${filtro} or ${filtro} == null">
+                        <td th:text="${vhistorico.idmovimiento}">ID Producto</td>
+                        <td th:text="${vhistorico.idproductos}">ID Producto</td>
+                        <td th:text="${vhistorico.tipomovimiento}">ID Producto</td>
+                        <td th:text="${vhistorico.idusuario}">ID Producto</td>
+                        <td th:text="${vhistorico.fechamov}">ID Producto</td>
+                    </tr>
+                </tbody>
+          </table> 
+        
+        </div>
+                  
+        <footer th:replace="Plantillas/menu :: footer"></footer>
+    </body>
+</html>

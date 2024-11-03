@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+      >
+    <head th:insert="Plantillas/menu :: head">
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header th:replace="Plantillas/menu :: menu"></header>
+        <h2>Alta de Productos</h2>
+        <div>
+            <div class="row">
+                <form  th:action="@{/iSPSalvar}" method="post"  th:object="${productos}" class="col s12">
+                    <div class="input-field col s6">
+                        <input th:field="*{nomproducto}" id="last_name" type="text" class="validate" required>
+                        <label for="last_name">Producto</label>
+                    </div>
+                    <input type="hidden" th:field="*{cantidad}">
+                    <input type="hidden" th:field="*{estatus}">
+                    <input class="waves-effect waves-light btn-small" type="submit" value="Agregar"></input>
+   
+                </form>
+                
+            </div>
+        </div>
+        <footer th:replace="Plantillas/menu :: footer"></footer>
+    </body>
+</html>

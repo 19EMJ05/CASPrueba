@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:insert="Plantillas/menu :: head">
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header th:replace="Plantillas/menu :: menu"></header>
+        <div style="width: 100%; align-content: center; text-align: center;">
+            <h2>Baja de Productos</h2>
+            <form  th:action="@{/iSPSalvar}" method="post"  th:object="${productos}">
+                <table style="width: 30%; border-collapse: collapse;  margin: auto;  ">
+                <thead>
+                    <tr>                     
+                        <th>Producto</th>  
+
+                    </tr>
+                </thead>
+
+                <tbody th:if="${vProductos != null and !vProductos.empty}">
+                    <tr th:each="vProduc: ${vProductos}" th:if="${vProduc.estatus == '1'}">
+                        <td th:text="${vProduc.nomproducto}"></td>
+                        <td> <a th:href="@{/bLupdate/}+${vProduc.idproducto}" th:text="Baja"></a></td>
+
+                    </tr>
+                </tbody>
+            </table> 
+            </form>
+        </div>
+        <footer th:replace="Plantillas/menu :: footer"></footer>
+    </body>
+</html>
